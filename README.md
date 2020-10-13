@@ -9,7 +9,7 @@ https://code.visualstudio.com/docs/python/python-tutorial
 ## Useful Links
 Google Drive Folder - https://drive.google.com/drive/folders/14HpxbZN-GuVDOwKQypAx36eTKq4zwKGX
 
-OverLeaf - https://www.overleaf.com/project/5f84fdea3ab18700010164a0
+OverLeaf - https://www.overleaf.com/project/5f84fef392650b0001aeb062
 
 ## PR/Branch Management
 Please use separate branches and utilize a pull request to master if you are working on a non-trivial change to the source code (e.g. implementing classifiers or working on image pre-processing).
