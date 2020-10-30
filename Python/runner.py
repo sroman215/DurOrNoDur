@@ -5,7 +5,6 @@ from classifier import Classifier
 
 ### Import the files and extract out the feature vectors from the data
 myParser = ImageParser()
-print(myParser.featureVectorDict)
 
 ### Parse the feature vector dictionary into feature vectors, then run the classifier 
 featureVectors = myParser.featureVectorDict.values()

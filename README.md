@@ -15,7 +15,8 @@ OverLeaf - https://www.overleaf.com/project/5f84fef392650b0001aeb062
 Please use separate branches and utilize a pull request to master if you are working on a non-trivial change to the source code (e.g. implementing classifiers or working on image pre-processing).
 
 ## Overall Areas of Code:
-1. Process Image Files to get the Feature Features 
-2. Classification Implementation(s)
-3. Post-processing of classification --> graphs lookin' pretty and shit
-4. Runner File to manage doing stuff.
+1. imageParser.py - Process Image Files to get the Feature Features 
+2. image.py - House properties of a file
+3. classifier.py - Classification Implementation(s)
+4. analysis.py - Post-processing of classification --> graphs lookin' pretty and shit
+5. runner.py - Runner File to manage doing stuff.

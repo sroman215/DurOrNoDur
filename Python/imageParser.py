@@ -2,7 +2,7 @@ from os import listdir
 from image import Image
 
 class ImageParser:
-    featureVectorDict = dict()
+    featureVectorDict = dict() # Relates file name to file properties
 
     def __init__(self):
         self.imageFileNames = self.loadImages()
@@ -16,7 +16,11 @@ class ImageParser:
     # Iterates over the image files to extract out the feature vectors
     def setAllFeatureVectors(self):
         for imageName in self.imageFileNames:
-            self.featureVectorDict[imageName] = self.parseFeatureVectors(imageName)
+            image = Image()
+            image.fileName = imageName
+            image.label = 0 # TODO - Figure out how/where we decide the label
+            image.featureVectors = self.parseFeatureVectors(imageName)
+            self.featureVectorDict[imageName] = image
 
     def parseFeatureVectors(self, imageName):
         ## Put code here to store the feature vector as a list
