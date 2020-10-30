@@ -1,7 +1,19 @@
-import matplotlib.pyplot as plt
-import numpy as np
-import scipy as sci
+from imageParser import ImageParser 
+from image import Image
+from analysis import Analysis 
+from classifier import Classifier 
 
-x = np.linspace(0, 20, 100)  # Create a list of evenly-spaced numbers over the range
-plt.plot(x, np.sin(x))       # Plot the sine of each x point
-plt.show()                   # Display the plot
+### Import the files and extract out the feature vectors from the data
+myParser = ImageParser()
+print(myParser.featureVectorDict)
+
+### Parse the feature vector dictionary into feature vectors, then run the classifier 
+featureVectors = myParser.featureVectorDict.values()
+myClassifier = Classifier(featureVectors)
+
+### Use the classifier to predict some data
+results = myClassifier.predict()
+
+### Put the output of our classifier for the test data in a nice output
+myAnalysis = Analysis()
+myAnalysis.graphResults(results)
