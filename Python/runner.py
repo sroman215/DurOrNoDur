@@ -3,12 +3,11 @@ from image import Image
 from analysis import Analysis 
 from classifier import Classifier 
 
-### Import the files and extract out the feature vectors from the data
+### Import the files and extract out the feature vectors/labels from the data
 myParser = ImageParser()
 
-### Parse the feature vector dictionary into feature vectors, then run the classifier 
-featureVectors = myParser.featureVectorDict.values()
-myClassifier = Classifier(featureVectors)
+### Use the image data dictionary to classify the data
+myClassifier = Classifier(myParser.imageDict)
 
 ### Use the classifier to predict some data
 results = myClassifier.predict()

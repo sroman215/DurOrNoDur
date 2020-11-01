@@ -3,7 +3,7 @@ from os.path import isfile, join
 from image import Image
 
 class ImageParser:
-    featureVectorDict = dict() # Relates file name to file properties
+    imageDict = dict() # Relates file name to file properties
 
     # Constructor; hit on initialization
     def __init__(self):
@@ -47,7 +47,7 @@ class ImageParser:
         for imageName in self.imageFileNames:
             featureVectors = self.parseFeatureVectors(imageName)
             label = 0 # TODO - Think of a way to do the label setting
-            self.featureVectorDict[imageName] = Image(imageName, label, featureVectors)
+            self.imageDict[imageName] = Image(imageName, label, featureVectors)
 
     # Extract out the feature vectors for a given image file
     def parseFeatureVectors(self, imageName):
