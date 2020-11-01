@@ -6,6 +6,14 @@ Use this link from Microsoft to set up you VS Code IDe and Python so that you ca
 
 https://code.visualstudio.com/docs/python/python-tutorial
 
+## Setup
+After cloning the repo, run the following to point to a virtual environment and install all pip depedencies:
+1. useVirtualEnv.bat
+2. installDepedencies.bat
+
+If you add additional pip depdencies, please update the requirements.txt. This can be done most easily using the following command:
+updateRequirements.bat
+
 ## Useful Links
 Google Drive Folder - https://drive.google.com/drive/folders/14HpxbZN-GuVDOwKQypAx36eTKq4zwKGX
 
