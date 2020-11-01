@@ -19,9 +19,7 @@ class ImageParser:
         onlyFiles = self.getFilesInDir(imageFileDir)
 
         ## Only return files in the ImageFiles folder matching png, jpg, etc. 
-        filtered = self.filterFiles(onlyFiles)
-        print(filtered)
-        return filtered
+        return self.filterFiles(onlyFiles)
 
     # A simple 1 liner to extract only the files out of the chosen directory
     def getFilesInDir(self, directory): 
