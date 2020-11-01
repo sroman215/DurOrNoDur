@@ -6,7 +6,7 @@ class ImageParser:
     imageDict = dict() # Relates file name to file properties
 
     # Constructor; hit on initialization
-    def __init__(self):
+    def __init__(self) -> None:
         self.imageFileNames = self.loadImages()
         self.setAllFeatureVectors()
 
@@ -22,16 +22,16 @@ class ImageParser:
         return self.filterFiles(onlyFiles)
 
     # Define the allowed file types, then filter using an insanely convoluted 1 liner. Man I hate Python
-    def filterFiles(self, files): 
+    def filterFiles(self, files)-> list: 
         allowedFileTypes = ['png', 'jpg', 'gif', 'bmp', 'svg']
         return [k for k in files if any(allowedType in k for allowedType in allowedFileTypes) ]
 
     # A simple 1 liner to extract only the files out of the chosen directory
-    def getFilesInDir(self, directory): 
+    def getFilesInDir(self, directory)-> list: 
         return [join(directory, f) for f in listdir(directory) if isfile(join(directory, f))]
 
     # Python is dumb and doesn't understand ../ so I made something more complicated to arbitrarily get the correct directory path
-    def getImageFilesDir(self):
+    def getImageFilesDir(self) -> str:
         # Declare constants
         rootDirName = 'DurOrNoDur'
         currentFileDir = getcwd()
@@ -43,14 +43,14 @@ class ImageParser:
         return f"{rootDir}\ImageFiles"
 
     # Iterates over the image files to extract out the feature vectors
-    def setAllFeatureVectors(self):
+    def setAllFeatureVectors(self) -> None:
         for imageName in self.imageFileNames:
             featureVectors = self.parseFeatureVectors(imageName)
             label = 0 # TODO - Think of a way to do the label setting
             self.imageDict[imageName] = Image(imageName, label, featureVectors)
 
     # Extract out the feature vectors for a given image file
-    def parseFeatureVectors(self, imageName):
+    def parseFeatureVectors(self, imageName) -> list:
         ## Put code here to store the feature vector as a list
         return [1, 2, 3]
         
