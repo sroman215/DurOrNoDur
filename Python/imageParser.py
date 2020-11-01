@@ -13,7 +13,7 @@ class ImageParser:
     # Load all images in our images directory for later use
     def loadImages(self) -> list:
         # Generate the string for the ImageFiles directory
-        imageFileDir = self.generateImageFilesPath()
+        imageFileDir = self.getImageFilesDir()
 
         # Get only the files from the directory
         onlyFiles = self.getFilesInDir(imageFileDir)
@@ -21,17 +21,17 @@ class ImageParser:
         ## Only return files in the ImageFiles folder matching png, jpg, etc. 
         return self.filterFiles(onlyFiles)
 
-    # A simple 1 liner to extract only the files out of the chosen directory
-    def getFilesInDir(self, directory): 
-        return [join(directory, f) for f in listdir(directory) if isfile(join(directory, f))]
-
     # Define the allowed file types, then filter using an insanely convoluted 1 liner. Man I hate Python
     def filterFiles(self, files): 
         allowedFileTypes = ['png', 'jpg', 'gif', 'bmp', 'svg']
         return [k for k in files if any(allowedType in k for allowedType in allowedFileTypes) ]
 
+    # A simple 1 liner to extract only the files out of the chosen directory
+    def getFilesInDir(self, directory): 
+        return [join(directory, f) for f in listdir(directory) if isfile(join(directory, f))]
+
     # Python is dumb and doesn't understand ../ so I made something more complicated to arbitrarily get the correct directory path
-    def generateImageFilesPath(self):
+    def getImageFilesDir(self):
         # Declare constants
         rootDirName = 'DurOrNoDur'
         currentFileDir = getcwd()
