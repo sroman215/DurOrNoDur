@@ -1,4 +1,4 @@
-# An object to house and manipulate the data itself. May or may not end up being used
+# An object to house file name, label, and feature vectors. May be used for some feature vector calculation/manipulation
 class Image:
     def __init__(self, fileName, label, featureVectors):
         self.fileName = fileName
