@@ -33,7 +33,7 @@ class ImageParser:
     # Python is dumb and doesn't understand ../ so I made something more complicated to arbitrarily get the correct directory path
     def getImageFilesDir(self) -> str:
         # Declare constants
-        rootDirName = 'DurOrNoDur'
+        rootDirName = 'DurOrNoDur' # TODO - I think this only works because this is my personal root directory. Need to make sure this doesn't break for others
         currentFileDir = getcwd()
 
         # Format the directory structure to point to ImageFiles regardness of format/start location
