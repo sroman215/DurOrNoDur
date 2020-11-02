@@ -4,8 +4,8 @@ from image import Image
 
 class ImageParser:
     imageDict = dict() # Relates file name to file properties
-    durImages = []
-    noDurImages = []
+    durImages = [] # Initialize list for the image files that have a dur in them
+    noDurImages = [] # Initialize list for hte image files that DO NOT have a dur in them
 
     # Constructor; hit on initialization
     def __init__(self) -> None:
