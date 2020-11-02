@@ -46,7 +46,7 @@ class ImageParser:
     def setAllFeatureVectors(self) -> None:
         for imageName in self.imageFileNames:
             featureVectors = self.parseFeatureVectors(imageName)
-            label = 0 # TODO - Think of a way to do the label setting
+            label = 0 # TODO - Derive the label based on being in either the "Dur" or the "NoDur" folder
             self.imageDict[imageName] = Image(imageName, label, featureVectors)
 
     # Extract out the feature vectors for a given image file
