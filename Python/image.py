@@ -6,4 +6,4 @@ class Image:
         self.featureVectors = featureVectors
 
     def printValues(self):
-        print(f"File Name: ${self.fileName}, Label: {self.label}, Feature Vectors: {self.featureVectors}")
+        print(f"File Name: {self.fileName}, Label: {self.label}, Feature Vectors: {self.featureVectors}")
