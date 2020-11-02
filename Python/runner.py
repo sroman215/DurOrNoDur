@@ -5,6 +5,7 @@ from classifier import Classifier
 
 ### Import the files and extract out the feature vectors/labels from the data
 myParser = ImageParser()
+myParser.printImageDictValues()
 
 ### Use the image data dictionary to classify the data
 myClassifier = Classifier(myParser.imageDict)

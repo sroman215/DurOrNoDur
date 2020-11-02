@@ -4,22 +4,31 @@ from image import Image
 
 class ImageParser:
     imageDict = dict() # Relates file name to file properties
+    durImages = []
+    noDurImages = []
 
     # Constructor; hit on initialization
     def __init__(self) -> None:
-        self.imageFileNames = self.loadImages()
-        self.setAllFeatureVectors()
+        self.loadImages()
+        self.setAllFeatureVectors(self.durImages, 1)
+        self.setAllFeatureVectors(self.noDurImages, 0)
 
     # Load all images in our images directory for later use
-    def loadImages(self) -> list:
+    def loadImages(self) -> None:
         # Generate the string for the ImageFiles directory
         imageFileDir = self.getImageFilesDir()
 
         # Get only the files from the directory
-        onlyFiles = self.getFilesInDir(imageFileDir)
-
+        durImagesRaw = self.getFilesInDir(f"{imageFileDir}\Dur")
+        noDurImagesRaw = self.getFilesInDir(f"{imageFileDir}\\NoDur") # \N represents new line, so we need an escape character
+        
         ## Only return files in the ImageFiles folder matching png, jpg, etc. 
-        return self.filterFiles(onlyFiles)
+        self.durImages = self.filterFiles(durImagesRaw)
+        self.noDurImages = self.filterFiles(noDurImagesRaw)
+
+    def printImageDictValues(self) -> None: 
+        for image in list(self.imageDict.values()):
+            image.printValues()
 
     # Define the allowed file types, then filter using an insanely convoluted 1 liner. Man I hate Python
     def filterFiles(self, files)-> list: 
@@ -43,10 +52,9 @@ class ImageParser:
         return f"{rootDir}\ImageFiles"
 
     # Iterates over the image files to extract out the feature vectors
-    def setAllFeatureVectors(self) -> None:
-        for imageName in self.imageFileNames:
+    def setAllFeatureVectors(self, imageFileNames, label) -> None:
+        for imageName in imageFileNames:
             featureVectors = self.parseFeatureVectors(imageName)
-            label = 0 # TODO - Derive the label based on being in either the "Dur" or the "NoDur" folder
             self.imageDict[imageName] = Image(imageName, label, featureVectors)
 
     # Extract out the feature vectors for a given image file
