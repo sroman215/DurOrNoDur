@@ -6,6 +6,8 @@ Use this link from Microsoft to set up you VS Code IDe and Python so that you ca
 
 https://code.visualstudio.com/docs/python/python-tutorial
 
+11/6/2020 - Do not check in depdendencies or specific .vscode files. I realized this caused issues between my machine and Charles' machine, and may cause other problems down the line.
+
 ## Setup
 After cloning the repo, run the following to point to a virtual environment and install all pip depedencies:
 1. useVirtualEnv.bat
