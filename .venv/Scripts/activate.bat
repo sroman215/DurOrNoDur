@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\Scott\Documents\Georgia Tech\Statistical Machine Learning\DurOrNoDur\.venv
+set VIRTUAL_ENV=D:\ML\DurOrNoDur\.venv
 
 if not defined PROMPT set PROMPT=$P$G
 
