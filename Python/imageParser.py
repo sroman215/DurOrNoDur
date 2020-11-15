@@ -1,6 +1,7 @@
 from os import listdir, getcwd
 from os.path import isfile, join
 from image import Image
+import glob
 
 class ImageParser:
     imageDict = dict() # Relates file name to file properties
@@ -37,7 +38,8 @@ class ImageParser:
 
     # A simple 1 liner to extract only the files out of the chosen directory
     def getFilesInDir(self, directory)-> list: 
-        return [join(directory, f) for f in listdir(directory) if isfile(join(directory, f))]
+        recursiveFilesAndFolders = glob.glob(directory + '/**/*', recursive=True)
+        return list(filter(lambda f: "." in f, recursiveFilesAndFolders)) # Filters out the folders from the recursive lookup
 
     # Python is dumb and doesn't understand ../ so I made something more complicated to arbitrarily get the correct directory path
     def getImageFilesDir(self) -> str:
