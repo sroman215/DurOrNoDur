@@ -3,8 +3,20 @@ class Classifier:
         self.data = data
         return
 
-    def classify(self):
+    def KNNClassify(self):
         return
 
-    def predict(self):
+    def SVMClassify(self):
+        return
+
+    def CNNClassify(self):
+        return
+
+    def KNNPredict(self):
+        return
+
+    def SVMPredict(self):
+        return
+
+    def CNNPredict(self):
         return

@@ -15,6 +15,7 @@ from PIL import Image
 
 #scipy.misc.imresize
 
+# SAR TODO - Move this code into the Classifier class
 
 
 myParser = ImageParser()
