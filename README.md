@@ -25,6 +25,7 @@ https://code.visualstudio.com/docs/python/python-tutorial
           ├── Classifier.py     # Perform classification using dictionary of Image objects
           ├── Runner.py         # Runs the code
     ├── Scripts                 # Houses requirements.txt and powershell/batch scripts
+    ├── Results                 # Houses classification results/analysis
     
 ## Setup
 After cloning the repo, run the following to point to a virtual environment and install all pip depedencies:
