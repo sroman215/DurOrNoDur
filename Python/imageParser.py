@@ -61,7 +61,7 @@ class ImageParser:
         sliceIndex = currentFileDir.index(rootDirName)
         rootDir = currentFileDir[0 : sliceIndex + len(rootDirName) + 1]
         rootDir = rootDir[0:len(rootDir)-1] if rootDir[-1] == "\\" else  rootDir 
-        return f"{rootDir}\ImageFiles"
+        return f"{rootDir}\\ImageFiles"
 
     # Iterates over the image files to extract out the feature vectors
     def setAllFeatureVectors(self, imageFileNames, label) -> None:
