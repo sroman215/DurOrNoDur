@@ -1,1 +1,3 @@
-pip install -r requirements.txt
+cd..
+pip install -r Scripts/requirements.txt
+cd Scripts
