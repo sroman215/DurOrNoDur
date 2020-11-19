@@ -1,10 +1,18 @@
 class Classifier:
     def __init__(self, data):
         self.data = data
-        return
+        self.durData = self.splitDataByLabel(1)
+        self.noDurData = self.splitDataByLabel(0)
+
+    def splitDataByLabel(self, label): 
+        newDict = dict()
+        for (key, value) in self.data.items():
+            if (value.label == label):
+                newDict[key] = value
+        return newDict
 
     def KNNClassify(self):
-        return
+        return []
 
     def SVMClassify(self):
         return

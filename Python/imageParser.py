@@ -2,17 +2,21 @@ from os import listdir, getcwd
 from os.path import isfile, join
 from image import Image
 import glob
+import numpy as np
 
 class ImageParser:
+    dictFileName = 'imageDictOutput.npy' # Name of file to hold the ImageDict
     imageDict = dict() # Relates file name to file properties
     durImages = [] # Initialize list for the image files that have a dur in them
     noDurImages = [] # Initialize list for hte image files that DO NOT have a dur in them
 
-    # Constructor; hit on initialization
-    def __init__(self) -> None:
+    # Kick off constructing the dictionary
+    def constructDictionary(self) -> dict:
         self.loadImages()
         self.setAllFeatureVectors(self.durImages, 1)
         self.setAllFeatureVectors(self.noDurImages, 0)
+        self.saveImageDictToFile(self.imageDict)
+        return self.imageDict
 
     # Load all images in our images directory for later use
     def loadImages(self) -> None:
@@ -20,12 +24,18 @@ class ImageParser:
         imageFileDir = self.getImageFilesDir()
 
         # Get only the files from the directory
-        durImagesRaw = self.getFilesInDir(f"{imageFileDir}\Dur")
+        durImagesRaw = self.getFilesInDir(f"{imageFileDir}\\Dur")
         noDurImagesRaw = self.getFilesInDir(f"{imageFileDir}\\NoDur") # \N represents new line, so we need an escape character
         
         ## Only return files in the ImageFiles folder matching png, jpg, etc. 
         self.durImages = self.filterFiles(durImagesRaw)
         self.noDurImages = self.filterFiles(noDurImagesRaw)
+
+    def saveImageDictToFile(self, obj) -> None:
+        np.save(self.dictFileName, obj)
+
+    def loadImageDictToFile(self) -> dict:
+        return np.load(self.dictFileName, allow_pickle='TRUE').item()
 
     def printImageDictValues(self) -> None: 
         for image in list(self.imageDict.values()):
