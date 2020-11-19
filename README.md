@@ -20,7 +20,7 @@ https://code.visualstudio.com/docs/python/python-tutorial
               ├── Bald Eagle    # Sub-classifying into pictures of Bald Eagles
     ├── Python 
           ├── Image.py          # Class definition for housing x_i, y_i, and other info
-          ├── ImageParser.py      # Convert ImageFiles to dictionary of Image objects
+          ├── ImageParser.py    # Convert ImageFiles to dictionary of Image objects
           ├── Analysis.py       # Perform analytis post-classification
           ├── Classifier.py     # Perform classification using dictionary of Image objects
           ├── Runner.py         # Runs the code
