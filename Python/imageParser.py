@@ -21,21 +21,21 @@ class ImageParser:
     # Load all images in our images directory for later use
     def loadImages(self) -> None:
         # Generate the string for the ImageFiles directory
-        imageFileDir = self.getImageFilesDir()
+        rootDir = self.getRootDir()
 
         # Get only the files from the directory
-        durImagesRaw = self.getFilesInDir(f"{imageFileDir}\\Dur")
-        noDurImagesRaw = self.getFilesInDir(f"{imageFileDir}\\NoDur") # \N represents new line, so we need an escape character
+        durImagesRaw = self.getFilesInDir(f"{rootDir}\\ImageFiles\\Dur")
+        noDurImagesRaw = self.getFilesInDir(f"{rootDir}\\ImageFiles\\NoDur") # \N represents new line, so we need an escape character
         
         ## Only return files in the ImageFiles folder matching png, jpg, etc. 
         self.durImages = self.filterFiles(durImagesRaw)
         self.noDurImages = self.filterFiles(noDurImagesRaw)
 
     def saveImageDictToFile(self, obj) -> None:
-        np.save(self.dictFileName, obj)
+        np.save(join(f"{self.getRootDir()}\\Python", self.dictFileName), obj)
 
     def loadImageDictToFile(self) -> dict:
-        return np.load(self.dictFileName, allow_pickle='TRUE').item()
+        return np.load(join(f"{self.getRootDir()}\\Python", self.dictFileName), allow_pickle='TRUE').item()
 
     def printImageDictValues(self) -> None: 
         for image in list(self.imageDict.values()):
@@ -52,7 +52,7 @@ class ImageParser:
         return list(filter(lambda f: "." in f, recursiveFilesAndFolders)) # Filters out the folders from the recursive lookup
 
     # Python is dumb and doesn't understand ../ so I made something more complicated to arbitrarily get the correct directory path
-    def getImageFilesDir(self) -> str:
+    def getRootDir(self) -> str:
         # Declare constants
         rootDirName = 'DurOrNoDur' # Git root directory so it's fine
         currentFileDir = getcwd()
@@ -60,8 +60,7 @@ class ImageParser:
         # Format the directory structure to point to ImageFiles regardness of format/start location
         sliceIndex = currentFileDir.index(rootDirName)
         rootDir = currentFileDir[0 : sliceIndex + len(rootDirName) + 1]
-        rootDir = rootDir[0:len(rootDir)-1] if rootDir[-1] == "\\" else  rootDir 
-        return f"{rootDir}\\ImageFiles"
+        return rootDir[0:len(rootDir)-1] if rootDir[-1] == "\\" else  rootDir 
 
     # Iterates over the image files to extract out the feature vectors
     def setAllFeatureVectors(self, imageFileNames, label) -> None:
