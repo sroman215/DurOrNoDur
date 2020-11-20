@@ -49,7 +49,7 @@ class ImageParser:
 
     # Define the allowed file types, then filter using an insanely convoluted 1 liner. Man I hate Python
     def filterFiles(self, files)-> list: 
-        allowedFileTypes = ['png', 'jpg', 'gif', 'bmp', 'svg']
+        allowedFileTypes = ['png', 'jpg', 'bmp', 'svg']
         return [k for k in files if any(allowedType in k for allowedType in allowedFileTypes) ]
 
     # A simple 1 liner to extract only the files out of the chosen directory
@@ -113,7 +113,7 @@ class ImageParser:
         content_array  = np.array(content)
         lowpass = ndimage.gaussian_filter(content_array, 10)
         gauss_highpass = content_array - lowpass
-        plt.imshow(gauss_highpass[:,:,0])
+        #plt.imshow(gauss_highpass[:,:,0])
 
         plt.show()    
         R = []
@@ -124,8 +124,8 @@ class ImageParser:
                 R = np.append(R, gauss_highpass[i, j][2])
                 G = np.append(G, gauss_highpass[i, j][1])
                 B = np.append(B, gauss_highpass[i, j][0])
-            
+        #test = np.concatenate((R,G,B))
         
         #feature_vector = 
-        return np.append(R,G,B) 
+        return np.concatenate((R,G,B))
         
