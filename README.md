@@ -8,6 +8,25 @@ https://code.visualstudio.com/docs/python/python-tutorial
 
 11/6/2020 - Do not check in depdendencies or specific .vscode files. I realized this caused issues between my machine and Charles' machine, and may cause other problems down the line.
 
+## Code Structure
+
+    .
+    ├── .venv                   # Virtual environment files
+    ├── ImageFiles             
+          ├── Deer              # Images of Deer
+          ├── NoDeer            # All Images of Not-Deer pictures
+              ├── Bear          # Sub-classifying into pictures of Bears
+              ├── Bobcat        # Sub-classifying into pictures of Bobcats
+              ├── Bald Eagle    # Sub-classifying into pictures of Bald Eagles
+    ├── Python 
+          ├── Image.py          # Class definition for housing x_i, y_i, and other info
+          ├── ImageParser.py    # Convert ImageFiles to dictionary of Image objects
+          ├── Analysis.py       # Perform analytis post-classification
+          ├── Classifier.py     # Perform classification using dictionary of Image objects
+          ├── Runner.py         # Runs the code
+    ├── Scripts                 # Houses requirements.txt and powershell/batch scripts
+    ├── Results                 # Houses classification results/analysis
+    
 ## Setup
 After cloning the repo, run the following to point to a virtual environment and install all pip depedencies:
 1. useVirtualEnv.bat

@@ -17,7 +17,9 @@ from PIL import Image
 
 # SAR TODO - Move this code into the Classifier class
 
-
+# -------------------------------------------------------
+# -------------------- CAN THIS BE  DELETED ?? ----------
+# -------------------------------------------------------
 myParser = ImageParser()
 
 print(list(myParser.imageDict.values())[0].fileName)
@@ -42,7 +44,11 @@ smallIMG = imgPIL.resize((250,250), Image.ANTIALIAS)
 #plt.imshow(smallIMG)
 #plt.show()
 
-data_dir = "C:\\Users\\crsny\\Documents\\GradSchool\\2020-2021\\Project\\DurOrNoDur\\ImageFiles"
+# -------------------------------------------------------
+# -------------------- All the way to here?? ----------
+# -------------------------------------------------------
+
+data_dir = myParser.getImageFilesDir()
 
 batch_size = 32
 img_height = 256
