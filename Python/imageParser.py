@@ -55,7 +55,7 @@ class ImageParser:
     # A simple 1 liner to extract only the files out of the chosen directory
     def getFilesInDir(self, directory)-> list: 
         recursiveFilesAndFolders = glob.glob(directory + '/**/*', recursive=True)
-        return [ list(filter(lambda f: "." in f, recursiveFilesAndFolders))[0] ] # Filters out the folders from the recursive lookup
+        return list(filter(lambda f: "." in f, recursiveFilesAndFolders)) # Filters out the folders from the recursive lookup
 
     # Python is dumb and doesn't understand ../ so I made something more complicated to arbitrarily get the correct directory path
     def getRootDir(self) -> str:
@@ -73,6 +73,8 @@ class ImageParser:
         for imageName in imageFileNames:
             featureVectors = self.parseFeatureVectors(imageName)
             self.imageDict[imageName] = Image(imageName, label, featureVectors)
+            if len(self.imageDict.values()) % 25 == 0:
+                print(f"Number of Images Processed:{len(self.imageDict.values())} of {len(imageFileNames)}")
 
 
 
@@ -121,9 +123,14 @@ class ImageParser:
         G = []
         for i in range(gauss_highpass.shape[0]):
             for j in range(gauss_highpass.shape[1]):
-                R = np.append(R, gauss_highpass[i, j][2])
-                G = np.append(G, gauss_highpass[i, j][1])
-                B = np.append(B, gauss_highpass[i, j][0])
+                try: 
+                    R = np.append(R, gauss_highpass[i, j][2])
+                    G = np.append(G, gauss_highpass[i, j][1])
+                    B = np.append(B, gauss_highpass[i, j][0])
+                except:
+                    R = np.append(B, gauss_highpass[i, j])
+                    G = np.append(B, gauss_highpass[i, j])
+                    B = np.append(B, gauss_highpass[i, j])
         #test = np.concatenate((R,G,B))
         
         #feature_vector = 
