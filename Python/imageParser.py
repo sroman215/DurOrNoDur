@@ -31,12 +31,15 @@ class ImageParser:
         self.durImages = self.filterFiles(durImagesRaw)
         self.noDurImages = self.filterFiles(noDurImagesRaw)
 
+    # Saves the imageDict to the Python folder
     def saveImageDictToFile(self, obj) -> None:
         np.save(join(f"{self.getRootDir()}\\Python", self.dictFileName), obj)
 
-    def loadImageDictToFile(self) -> dict:
+    # Returns the imageDict that we stored locally
+    def loadImageDictFromFile(self) -> dict:
         return np.load(join(f"{self.getRootDir()}\\Python", self.dictFileName), allow_pickle='TRUE').item()
 
+    # Prints out all the imageDict values
     def printImageDictValues(self) -> None: 
         for image in list(self.imageDict.values()):
             image.printValues()
