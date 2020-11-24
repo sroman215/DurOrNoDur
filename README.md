@@ -47,5 +47,5 @@ Please use separate branches and utilize a pull request to master if you are wor
 1. imageParser.py - Process Image Files to get the Feature Features 
 2. image.py - House properties of a file
 3. classifier.py - Classification Implementation(s)
-4. analysis.py - Post-processing of classification --> graphs lookin' pretty and shit
+4. analysis.py - Post-processing of classification
 5. runner.py - Runner File to manage doing stuff.
