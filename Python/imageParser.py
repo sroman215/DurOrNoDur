@@ -7,12 +7,12 @@ from scipy import ndimage
 import matplotlib.pyplot as plt
 from PIL import Image as img_format
 
-class ImageParser:
-    dictFileName = 'imageDictOutput.npy' # Name of file to hold the ImageDict
+class ImageParser():
+    dictFileName= [] #dictFileNameChoice #'imageDictOutputHP.npy' # Name of file to hold the ImageDict
     imageDict = dict() # Relates file name to file properties
     durImages = [] # Initialize list for the image files that have a dur in them
     noDurImages = [] # Initialize list for hte image files that DO NOT have a dur in them
-
+    flagHP = bool() 
     # Kick off constructing the dictionary
     def constructDictionary(self) -> dict:
         self.loadImages()
@@ -116,21 +116,25 @@ class ImageParser:
         lowpass = ndimage.gaussian_filter(content_array, 10)
         gauss_highpass = content_array - lowpass
         #plt.imshow(gauss_highpass[:,:,0])
+        if (self.flagHP):
+            dataToProcess = gauss_highpass
+        else:
+            dataToProcess = content_array
 
-        plt.show()    
+        #plt.show()    
         R = []
         B = []
         G = []
-        for i in range(gauss_highpass.shape[0]):
-            for j in range(gauss_highpass.shape[1]):
+        for i in range(dataToProcess.shape[0]):
+            for j in range(dataToProcess.shape[1]):
                 try: 
-                    R = np.append(R, gauss_highpass[i, j][2])
-                    G = np.append(G, gauss_highpass[i, j][1])
-                    B = np.append(B, gauss_highpass[i, j][0])
+                    R = np.append(R, dataToProcess[i, j][2])
+                    G = np.append(G, dataToProcess[i, j][1])
+                    B = np.append(B, dataToProcess[i, j][0])
                 except:
-                    R = np.append(B, gauss_highpass[i, j])
-                    G = np.append(B, gauss_highpass[i, j])
-                    B = np.append(B, gauss_highpass[i, j])
+                    R = np.append(B, dataToProcess[i, j])
+                    G = np.append(B, dataToProcess[i, j])
+                    B = np.append(B, dataToProcess[i, j])
         #test = np.concatenate((R,G,B))
         
         #feature_vector = 
