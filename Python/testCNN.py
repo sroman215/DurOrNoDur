@@ -17,8 +17,11 @@ from skimage.transform import resize
 
 #scipy.misc.imresize
 
+# SAR TODO - Move this code into the Classifier class
 
-
+# -------------------------------------------------------
+# -------------------- CAN THIS BE  DELETED ?? ----------
+# -------------------------------------------------------
 myParser = ImageParser()
 
 
@@ -53,7 +56,15 @@ smallIMG = imgPIL.resize((250,250), Image.ANTIALIAS)
 #plt.imshow(smallIMG)
 #plt.show()
 
+<<<<<<< HEAD
 data_dir = "C:\\Users\\crsny\\Documents\\GradSchool\\2020-2021\\Project\\DurOrNoDur\\ImageFiles2"
+=======
+# -------------------------------------------------------
+# -------------------- All the way to here?? ----------
+# -------------------------------------------------------
+
+data_dir = myParser.getImageFilesDir()
+>>>>>>> 28a8689d879504b2e87588d55b6472329edd6451
 
 batch_size = 32
 img_height = 256
